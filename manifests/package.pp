@@ -8,7 +8,7 @@ define r::package (
   $timeout      = 300,
 ) {
 
-    case $::osfamily {
+    case $facts['os']['family'] {
     'Debian', 'RedHat': {
 
       if $r_path == '' {
@@ -56,7 +56,7 @@ define r::package (
       }
 
     }
-    default: { fail("Not supported on osfamily ${::osfamily}") }
+    default: { fail("Not supported on osfamily ${facts['os']['family']}") }
   }
 
 }
